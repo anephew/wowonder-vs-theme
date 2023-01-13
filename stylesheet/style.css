@@ -132,7 +132,7 @@ hr.style-two {
 }
 
 .verified-color {
-  color: var(--main);
+  color: #4CAF50;
 }
 
 .verified-color svg {
@@ -140,7 +140,7 @@ hr.style-two {
 }
 
 .verified-color svg path:first-child {
-  fill: var(--main);
+  fill: #4CAF50;
 }
 
 .verified-color svg path:last-child {
@@ -24728,7 +24728,7 @@ h3 img {
   border-radius: 50%;
   width: 15px;
   height: 15px;
-  background: var(--main);
+  background: #4CAF50;
   box-shadow: 0 0 0 4px white;
   z-index: 5;
 }
