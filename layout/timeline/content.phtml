@@ -228,32 +228,6 @@ if (mysqli_query($wo['sqlConnect'], "DESCRIBE `wondertage_settings`" )) {
                   <!-- followers count -->
 
 
-                  <?php 
-                  
-                  if (Wo_FriendPrivacy($wo['user_profile']['id'],$wo['user_profile']['friend_privacy'])) {
-
-                  if (Wo_CountFollowing($wo['user_profile']['user_id']) > 0) { ?>
-
-                  <div class="profile_count d-flex mt-3 mr-3" style="">
-                   
-                  <?php
-
-                  foreach (Wo_GetFollowing($wo['user_profile']['user_id'], 'profile', 3) as $wo['UsersList']) {
-												echo Wo_LoadPage('timeline/follow-list-header');
-											}
-
-                   ?>   
-
-                    <a href="/<?php echo $wo['user_profile']['username']; ?>/followers" class="pl-1"
-                      data-ajax="?link1=timeline&amp;u=<?php echo $wo['user_profile']['username']; ?>&amp;type=followers">
-                      <div class="text-dark"><?php echo number_format($wo['user_profile']['details']['following_count']);?></div>
-                      <span>друга</span>
-                    </a>
-                  </div>
-                  <!-- follower count-->
-
-                  <?php } } ?>
-
                   <div class="rating">
                     <div class="rate_row">
 
@@ -377,49 +351,8 @@ if (mysqli_query($wo['sqlConnect'], "DESCRIBE `wondertage_settings`" )) {
 						</a>
 					<?php } ?>
 				</div>
-				<div class="user-bottom-nav">
-					<ul>
-						<li>
-							<a href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username'];?>"><?php echo $wo['lang']['timeline'];?></a>
-						</li>
-						<?php if ($wo['config']['groups'] == 1) {?>
-							<li>
-								<a href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=groups');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=groups"><?php echo $wo['lang']['groups'];?></a>
-							</li>
-						<?php } ?>
-						<?php if ($wo['config']['pages'] == 1) {?>
-							<li>
-								<a href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=likes');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=likes"><?php echo $wo['lang']['likes'];?></a>
-							</li>
-						<?php } ?>
-						<?php if ($wo['config']['connectivitySystem'] == 1) {?>
-							<li>
-								<a href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=followers');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=followers"><?php echo $wo['lang']['friends_btn'];?> <span><?php echo number_format($wo['user_profile']['details']['following_count']);?></span></a>
-							</li>	
-						<?php } ?>
-						<?php if ($wo['config']['connectivitySystem'] == 0) {?>
-							<!-- <li>
-								<a href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=following');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=following"><?php echo $wo['lang']['following'];?> <span><?php echo number_format($wo['user_profile']['details']['following_count']);?></span></a>
-							</li> -->
-							<!-- <li>
-								<a href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=followers');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=followers"><?php echo $wo['lang']['followers'];?> <span><?php echo number_format($wo['user_profile']['details']['followers_count']);?></span></a>
-							</li> -->
-						<?php } ?>
-						<li>
-							<a href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=photos');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=photos"><?php echo $wo['lang']['photos'];?></a>
-						</li>
-						<?php if ($wo['config']['video_upload'] == 1) { ?>						
-							<li>
-								<a href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=videos');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=videos"><?php echo $wo['lang']['videos'];?></a>
-							</li>
-						<?php } ?>
-						<?php if ($wo['config']['store_system'] == 'on') { ?>						
-							<li>
-								<a href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=products');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=products"><?php echo $wo['lang']['products'];?></a>
-							</li>
-						<?php } ?>
-					</ul>
-				</div>
+
+
 				<?php } ?>
 
       </div>
@@ -760,6 +693,7 @@ if (mysqli_query($wo['sqlConnect'], "DESCRIBE `wondertage_settings`" )) {
 					<?php endif; ?>
 		
 					<div class="col-lg-3 sidebar rightcol custom-fixed-side">
+
 						<div class="page-margin wow_content p15 tag_page_side_no_m">
 							<?php if($wo['loggedin'] == true) {  ?>
 								<input type="text" class="search-for-posts tag_profile_search" onkeyup="Wo_SearchForPosts(this.value);" placeholder="<?php echo $wo['lang']['search_for_posts']; ?>"/>
@@ -853,6 +787,40 @@ if (mysqli_query($wo['sqlConnect'], "DESCRIBE `wondertage_settings`" )) {
 
               <!-- FOTOS -->
 						</div>
+
+            <?php
+
+          if (Wo_FriendPrivacy($wo['user_profile']['id'],$wo['user_profile']['friend_privacy'])) {
+
+            if (Wo_CountFollowing($wo['user_profile']['user_id']) > 0) { ?>
+
+            <div class="page-margin wow_content wow_sett_content sidebar-conatnier" id="sidebar-page-list-container">
+
+              <div class="valign wo_page_hdng">
+                Друзья
+                <div class="countGift"><?php echo number_format($wo['user_profile']['details']['following_count']);?></div>
+                <a class="all_gifts" href="/<?php echo $wo['user_profile']['username']; ?>/followers"
+                  data-ajax="?link1=timeline&amp;u=<?php echo $wo['user_profile']['username']; ?>&amp;type=followers" style="float: right;">Все</a>
+              </div>
+
+              <div class="user_media_list_section user_media_list_section_side d-flex mt-3">
+
+                <?php
+
+                  foreach (Wo_GetFollowing($wo['user_profile']['user_id'], 'profile', 4) as $wo['UsersList']) {
+												echo Wo_LoadPage('timeline/follows-list-sidebar');
+											}
+
+                   ?>   
+            
+              </div>
+           
+
+            </div>
+
+            <?php } } ?>
+
+            
 						<?php
 							$fields = Wo_GetProfileFields('none'); 
 							if (count($fields) > 0) {
