@@ -8756,7 +8756,7 @@ input.cusrange[type=range]::-ms-thumb {
   position: sticky;
   top: 0;
   z-index: 90;
-  background: var(--body-bg);
+  /* background: var(--body-bg); */
 }
 
 .tag_home_post_order {
