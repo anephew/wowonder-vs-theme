@@ -4,7 +4,7 @@
 }
 
 .chat-all-container {
-  display: none;
+  /* display: none; */
 }
 
 /*Basic*/
@@ -79,7 +79,7 @@ a.white:hover {
 }
 
 .tag_content.tag_chat_content {
-  /* margin-right: 90px; */
+  margin-right: 90px;
 }
 
 .tag_content.opacity_start {
@@ -275,7 +275,7 @@ p {
 }
 
 .header_top {
-  width: 1106px;
+  width: 1320px;
   margin: auto;
   position: relative;
   border-bottom: 1px solid #E8E8E8;
@@ -285,7 +285,7 @@ p {
 .content_body {
   position: relative;
   margin: 0.7rem auto;
-  width: 1106px;
+  width: 1328px;
   /* padding: 0 15px; */
 }
 
@@ -312,7 +312,7 @@ p {
   flex-direction: column;
   border-left: 1px solid #dcdcdc;
   padding: 0px 20px 80px;
-  background: var(--body-bg);
+  /* background: var(--body-bg); */
   border-radius: 15px;
 }
 
@@ -21347,7 +21347,7 @@ body span.flatpickr-weekday {
   }
 
   .tag_content.tag_chat_content {
-    /* margin-right: 70px; */
+    margin-right: 70px;
   }
 
   .chat-container .wow_chat_search {
