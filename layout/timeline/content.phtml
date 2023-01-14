@@ -957,6 +957,9 @@ if (mysqli_query($wo['sqlConnect'], "DESCRIBE `wondertage_settings`")) {
               <?php }
               } ?>
 
+             <?php 
+               if (Wo_CountUserLikes($wo['user_profile']['user_id']) > 0) { 
+               ?>
 
               <div class="page-margin wow_content wow_sett_content sidebar-conatnier" id="sidebar-page-list-container">
                 <div class="valign wo_page_hdng mb-3">
@@ -964,8 +967,16 @@ if (mysqli_query($wo['sqlConnect'], "DESCRIBE `wondertage_settings`")) {
                   <a class="all_gifts" href="/<?php echo $wo['user_profile']['username']; ?>/likes" data-ajax="?link1=timeline&amp;u=<?php echo $wo['user_profile']['username']; ?>&amp;type=likes" style="float: right;">Все</a>
                 </div>
 
+                <?php
+                foreach (Wo_GetLikes($wo['user_profile']['user_id'],'profile',5) as $wo['PageList']) {
+                  echo Wo_LoadPage('timeline/likess-sidebar');
+                } 
+
+                ?>
 
               </div>
+
+              <?php } ?>
 
 
               <?php
