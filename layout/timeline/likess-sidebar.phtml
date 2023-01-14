@@ -1,13 +1,9 @@
-<div class="pages-block user-data" data-page-id="2">
+<div class="pages-block user-data" data-page-id="<?php echo $wo['PageList']['page_id'];?>">
   <div class="pages">
     <div class="pagesImg">
-      <a href="<?php echo $wo['PageList']['url'];?>" data-ajax="?link1=timeline&amp;u=<?php echo $wo['PageList']['username']?>"><img
-          src="<?php echo $wo['PageList']['avatar']?>"
-          alt="<?php echo $wo['PageList']['user_name'];?>"></a>
-    </div>
-    <div class="pagesText">
-      <span><a href="<?php echo $wo['PageList']['url'];?>" data-ajax="?link1=timeline&amp;u=<?php echo $wo['PageList']['username']?>"><?php echo $wo['PageList']['user_name'];?></a></span>
-      <!-- <p>24 Подписчика</p> -->
+      <a href="<?php echo $wo['PageList']['url'];?>" data-ajax="?link1=timeline&amp;u=<?php echo $wo['PageList']['username']?>"><img src="<?php echo $wo['PageList']['avatar']?>" alt="<?php echo $wo['PageList']['user_name'];?>"></a>
+    </div><div class="pagesText"><span><a href="<?php echo $wo['PageList']['url'];?>" data-ajax="?link1=timeline&amp;u=<?php echo $wo['PageList']['username']?>"><?php echo $wo['PageList']['name'];?></a></span>
+      <p><?php echo Wo_CountPageLikes($wo['PageList']['page_id']);?> подписчиков</p>
     </div>
   </div>
 </div>
